@@ -1,8 +1,5 @@
-set_of_dirs = {}
 size_of_dirs = {}
 stack = []
-set_of_d = []
-
 
 with open("input.txt") as f:
     lines = f.readlines()
@@ -22,16 +19,7 @@ with open("input.txt") as f:
             continue
         else:
             p1, p2 = line.split()
-            if "dir" in p1:
-                if stack[-1] in set_of_dirs:
-                    set_of_dirs[stack[-1]][p2] = "dir"
-                else:
-                    set_of_dirs[stack[-1]] = {p2: "dir"}
-            else:
-                if stack[-1] in set_of_dirs:
-                    set_of_dirs[stack[-1]][p2] = int(p1)
-                else:
-                    set_of_dirs[stack[-1]] = {p2: int(p1)}
+            if "dir" not in p1:
                 for e in stack:
                     if e in size_of_dirs:
                         size_of_dirs[e] += int(p1)
