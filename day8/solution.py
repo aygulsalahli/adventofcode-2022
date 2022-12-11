@@ -52,7 +52,6 @@ with open("input.txt") as f:
             visible = True
             for j in range(col + 1, columns):
                 if a[row][j] >= a[row][col]:
-                    # print(f"{row} {col} {a[row][col]} {j} {a[row][j]}")
                     visible = False
                     break
 
