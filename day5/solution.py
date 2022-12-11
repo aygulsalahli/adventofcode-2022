@@ -6,7 +6,6 @@ def move_like_jagger(line):
         return
 
     cmds = line.split()
-    print(cmds)
     count, from_, to_ = int(cmds[1]), int(cmds[3]) - 1, int(cmds[5]) - 1
     while count > 0:
         elem = list_of_stacks[from_].pop(0)
@@ -28,7 +27,6 @@ with open("input.txt") as f:
                     break
                 if index == 0:
                     list_of_stacks.append([] if part[1] == " " else [part[1]])
-                    print(f"list of stacks created: {list_of_stacks}")
                 else:
                     if part[1] != " ":
                         list_of_stacks[ip].append(part[1])
