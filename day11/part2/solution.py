@@ -1,4 +1,5 @@
 monkeys = {}
+denominator = 1
 with open("../input.txt") as f:
     lines = f.readlines()
     current_monkey = 0
@@ -18,6 +19,7 @@ with open("../input.txt") as f:
         elif "  Test: divisible by " in line:
             divisible_by = int(line[21:])
             monkeys[current_monkey]["divisible_by"] = divisible_by
+            denominator *= divisible_by
         elif "    If true: throw to monkey " in line:
             true_case_monkey = int(line[29:])
             monkeys[current_monkey]["true_case_monkey"] = true_case_monkey
@@ -31,7 +33,7 @@ def monkey_logic(item, monkey):
     value = monkeys[monkey]["value"]
     value = item if value == "old" else int(value)
     worry_level = eval(f"{item} {operation} {value}")
-    worry_level = worry_level % 9699690
+    worry_level = worry_level % denominator
     if worry_level % monkeys[monkey]["divisible_by"] == 0:
         true_case_monkey = monkeys[monkey]["true_case_monkey"]
         monkeys[true_case_monkey]["si"].append(worry_level)
